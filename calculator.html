@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var operator="";
+var opd="";
+var opd2="";
+var first=true;
+function calc(v){
+	/*if(first){
+		
+		opd=v.value;
+		document.getElementById("code").value +=opd;
+		first=false;
+	}
+	else{
+		opd2=v.value;
+		document.getElementById("code").value +=opd2;
+		first=true;
+	}*/
+	document.getElementById("code").value+=v.value;
+}
+function equals(){
+	result=eval(document.getElementById("code").value);
+	var x=result;
+	
+	document.getElementById("code").value=x ;
+	//alert(result);
+}
+function setOperator(op){
+	/*
+	operator=op.value;
+	document.getElementById("code").value = operator;
+	*/
+	document.getElementById("code").value+=op.value;
+}
+</script>
+</head>
+<body>
+
+<form name="myForm" action=""
+ method="post">
+ 
+ <input type="code" name="code" id="code" value=""></br></br>
+ 
+ <input type="button" value="1" onclick="calc(this)" name="v1" >
+ <input type="button" value="2" onclick="calc(this)" name="v2" >
+ <input type="button" value="3" onclick="calc(this)" name="v3" >
+ <input type="button" value="." onclick="calc(this)" name="dot" >
+ <input type="button" value="*" onclick="setOperator(this)">
+ <input type="button" value="/" onclick="setOperator(this)" ></br>
+ 
+ 
+  <input type="button" value="4" onclick="calc(this)" name="v4" >
+ <input type="button" value="5" onclick="calc(this)" name="v5" >
+ <input type="button" value="6" onclick="calc(this)" name="v6" >
+ <input type="button" value="+" onclick="setOperator(this)" >
+ <input type="button" value="-" onclick="setOperator(this)" >
+ <input type="button" value="^2" onclick="myForm.code.value *= myForm.code.value" ></br>
+ 
+  <input type="button" value="7" onclick="calc(this)" name="v7" >
+ <input type="button" value="8" onclick="calc(this)" name="v8" >
+ <input type="button" value="9" onclick="calc(this)" name="v9" >
+ <input type="button" value="0" onclick="calc(this)" name="v0" >
+ <input type="button" value="C" name="clr" onclick="myForm.code.value = ''" >
+ <input type="button" value="=" name="eq" onclick="equals()" ></br>
+ 
+ 
+</form>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+
+<form name="myForm" action="welcome.php"
+ onsubmit="return passChk();return false;" method="post">
+Name: <input type="text" name="fname" id="fname" required></br>
+
+Password: <input type="password" name="pass" id="pass" required>
+<span id="review">weak</span></br>
+Re-enter Password: <input type="password" name="rpass" id="rpass" required></br>
+
+Email: <input type="text" name="email" id="email" required></br>
+<script>
+document.getElementById("fname").onkeyup = function() {myFunction()};
+document.getElementById("rpass").onsubmit = function() {passChk()};
+document.getElementById("pass").onkeyup = function() {myFunction()};
+document.getElementById("email").onkeyup = function() {myFunction()};
+function myFunction() {
+    var x = document.getElementById("email");
+    x.value = x.value.toUpperCase();
+	
+	var y = document.getElementById("fname");
+    y.value = y.value.toUpperCase();
+	
+	
+	var a = document.getElementById("pass").value;
+	var b = document.getElementById("rpass");
+	
+	
+	var paswd=  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+	
+	
+	if(!a.match(paswd) ){
+		
+		document.getElementById("review").innerHTML = 'very weak';
+	}
+	
+	else
+	{
+		document.getElementById("review").innerHTML = 'strong';
+	}
+	
+	
+}
+function passChk()
+{
+	var a = document.getElementById("pass");
+	var b = document.getElementById("rpass");
+	
+	var e = document.getElementById("email").value;
+    var atpos = e.indexOf("@");
+    var dotpos = e.lastIndexOf(".");
+    
+	if(a.value!=b.value)
+	{
+		alert("Password dose not match");
+		return false;
+	}
+	else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=e.length) {
+        alert("Not a valid e-mail address");
+		
+        return false;
+    }
+	else
+		return true;
+		
+}
+</script>
+<input type="submit" value="Submit" ></br>
+
+</form>
+<a href="calculator.html">CALCULATOR</a>
+
+
+
+</body>
+</html>
